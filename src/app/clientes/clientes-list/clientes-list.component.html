@@ -1,0 +1,73 @@
+<div class='container'>
+    <div class='row'>
+        <div class='col-sm-12'>
+            
+            <form class='form-inline'>
+                <fieldset class='form-group col-sm-11'></fieldset>
+                
+                <fieldset class='form-group col-sm-1'>
+                    <a class= 'btn btn-primary' routerLink="cliente/new">+</a>
+                </fieldset>
+            </form>
+            <br>
+            <table class='table table-striped'>
+                <thead>                
+                    <tr>
+                        <th class='col-sm-6'>NOMBRE COMPLETO</th>
+                        <th class='col-sm-6'>NIF</th>
+                        <th class='col-sm-6'>TELEFONO</th>
+                        <th class='col-sm-6'>MOVIL</th>
+                        <th class='col-sm-6'>CORREO</th>
+                        <th class='col-sm-6'>CALLE</th>
+                        <th class='col-sm-6'>CIUDAD</th>
+                    </tr>
+                </thead>
+                <tbody *ngIf="clientes">
+                    <tr *ngFor='let cliente of clientes'>
+                        <td class='col-sm-6'>
+                            <i>{{cliente.nombreCompleto}}</i>
+                        </td>
+                        
+                        <td class='col-sm-6'>
+                            <i>{{cliente.nif}}</i>
+                        </td>
+
+                        <td class='col-sm-6'>
+                            <i>{{cliente.contacto.telefono}}</i>
+                        </td>
+
+                        <td class='col-sm-6'>
+                            <i>{{cliente.contacto.movil}}</i>
+                        </td>
+
+                        <td class='col-sm-6'>
+                            <i>{{cliente.contacto.correo}}</i>
+                        </td>
+                        
+                        <td class='col-sm-6'>
+                            <i>{{cliente.direccion.calle}}</i>
+                        </td>
+                        
+                        <td class='col-sm-6'>
+                            <i>{{cliente.direccion.ciudad}}</i>
+                        </td>
+
+                        <td class=”col-sm-1”>
+                            
+                        </td>
+
+                        <td class=”col-sm-1”>
+                            <a class='btn btn-info' routerLink="cliente/{{cliente.id}}/edit">Editar</a>
+                        </td>
+
+
+                        <td class=”col-sm-1”>
+                            <a class='btn btn-info' (click)="borrar(cliente.id)">-</a>
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

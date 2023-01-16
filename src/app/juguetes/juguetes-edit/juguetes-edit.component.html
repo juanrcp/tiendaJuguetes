@@ -1,0 +1,82 @@
+<div class="container">
+    <div class="col-sm-12">
+        <form [formGroup]="perfileForm" (ngSubmit)="guardar()">
+
+            <fieldset class="form-group">
+
+                <div class="col-sm-12">
+                    <label class="control-label" for="identificador">IDENTIFICADOR: </label>
+                    <input type="text" class="form-control" formControlName="identificador" name="identificador" required="{{juguete?.identificador}}">
+                </div>
+
+            </fieldset>
+
+            <fieldset class="form-group">
+
+                <div class="col-sm-3">
+                    <label class="control-label" for="nombre">NOMBRE</label>
+                    <input type="text" class="form-control" formControlName="nombre" name="nif" required="{{juguete?.nombre}}"/>
+                </div>
+
+            </fieldset>
+
+            <fieldset class="form-group">
+
+                <div class="col-sm-3">
+                    <label class="control-label" for="descripcion">DESCRIPCION</label>
+                    <input type="text" class="form-control" formControlName="descripcion" name="descripcion" required="{{juguete?.descripcion}}">
+                </div>
+            </fieldset>
+
+            <fieldset class="form-group">
+
+                <div class="col-sm-3">
+                    <label class="control-label" for="categoria">CATEGORIA</label>
+                    <select class="form-control" formControlName="categoria" name="categoria" required="{{juguete?.categoria}}">
+
+                        <!--Con esta sintaxis conseguimos un elemento no selecionable y que muestra como una marca de agua-->
+                        <option value="" disabled selected hidden>Escoja una Categoria...</option>
+                        <option *ngFor="let edad of edadesJuegoSelect" [value]="edad">{{edad}}</option>
+                    </select>
+                </div>
+            </fieldset>
+
+            <fieldset class="form-group">
+
+                <div class="col-sm-3">
+                    <label class="control-label" for="familia">FAMILIA</label>
+                    <input type="text" class="form-control" formControlName="familia" name="familia" required="{{juguete?.familia}}">
+                </div>
+
+            </fieldset>
+
+            <fieldset class="form-group">
+
+                <div class="col-sm-3">
+                    <label class="control-label" for="precioCompra">PRECIO COMPRA</label>
+                    <input type="number" class="form-control" formControlName="precioCompra" name="precioCompra" required="{{juguete?.precioCompra}}">
+                </div>
+
+            </fieldset>
+
+            <fieldset class="form-group">
+
+                <div class="col-sm-3">
+                    <label class="control-label" for="precioVenta">PRECIO VENTA</label>
+                    <input type="number" class="form-control" formControlName="precioVenta" name="precioVenta" required="{{juguete?.precioVenta}}">
+                </div>
+
+            </fieldset>
+
+            <fieldset class="form-group" style="margin-top: 5%;">
+            
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-primary" [disabled]="!perfileForm.valid">GUARDAR</button>
+                    <button type="button" class="btn btn-primary" (click)="volver()" style="margin-left: 5%;">VOLVER</button>
+                </div>
+            
+            </fieldset>
+        </form>
+    </div>
+</div>
+

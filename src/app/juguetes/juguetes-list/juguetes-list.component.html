@@ -1,0 +1,74 @@
+<div class='container'>
+    <div class='row'>
+        <div class='col-sm-12'>
+            
+            <form class='form-inline'>
+                <fieldset class='form-group col-sm-11'></fieldset>
+                
+                <fieldset class='form-group col-sm-1'>
+                    <a class= 'btn btn-primary' routerLink="juguete/new">+</a>
+                </fieldset>
+            </form>
+            <br>
+            <table class='table table-striped'>
+                <thead>                
+                    <tr>
+                        <th class='col-sm-2'>IDENTIFICADOR</th>
+                        <th class='col-sm-6'>NOMBRE</th>
+                        <th class='col-sm-6'>DESCRIPCION</th>
+                        <th class='col-sm-6'>CATEGORIA</th>
+                        <th class='col-sm-6'>FAMILIA</th>
+                        <th class='col-sm-6'>P. COMPRA</th>
+                        <th class='col-sm-6'>P. VENTA</th>
+                    </tr>
+                </thead>
+                <tbody *ngIf="juguetes">
+                    <tr *ngFor='let juguete of juguetes'>
+                        <td class='col-sm-6'>
+                            <i>{{juguete.identificador}}</i>
+                        </td>
+                        
+                        <td class='col-sm-6'>
+                            <i>{{juguete.nombre}}</i>
+                        </td>
+
+                        <td class='col-sm-6'>
+                            <i>{{juguete.descripcion}}</i>
+                        </td>
+
+                        <td class='col-sm-6'>
+                            <i>{{juguete.categoria}}</i>
+                        </td>
+
+                        <td class='col-sm-6'>
+                            <i>{{juguete.familia}}</i>
+                        </td>
+                        
+                        <td class='col-sm-6'>
+                            <i>{{juguete.precioCompra}}</i>
+                        </td>
+                        
+                        <td class='col-sm-6'>
+                            <i>{{juguete.precioVenta}}</i>
+                        </td>
+
+                        <td class=”col-sm-1”>
+                            
+                        </td>
+
+                        <td class=”col-sm-1”>
+                            <a class='btn btn-info' routerLink="juguete/{{juguete.id}}/edit">Editar</a>
+                        </td>
+
+
+                        <td class=”col-sm-1”>
+                            <a class='btn btn-info' (click)="borrar(juguete.id)">-</a>
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

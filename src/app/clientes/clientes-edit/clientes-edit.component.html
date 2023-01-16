@@ -1,0 +1,71 @@
+<div class="container">
+    <div class="col-sm-12">
+        <form [formGroup]="perfileForm" (ngSubmit)="guardar()">
+
+            <fieldset class="form-group">
+
+                <div class="col-sm-12">
+                    <label class="control-label" for="nombreCompleto">NOMBRE Y APELLIDOS: </label>
+                    <input type="text" class="form-control" formControlName="nombreCompleto" name="nombreCompleto" required="{{cliente?.nombreCompleto}}">
+                </div>
+
+            </fieldset>
+
+            <fieldset class="form-group">
+
+                <div class="col-sm-3">
+                    <label class="control-label" for="nif">NIF</label>
+                    <input type="text" class="form-control" formControlName="nif" name="nif" required="{{cliente?.nif}}"/>
+                </div>
+
+            </fieldset>
+
+            <fieldset class="form-group">
+
+                <h3>CONTACTO</h3>
+
+                <div class="col-sm-3">
+                    <label class="control-label" for="telefono">TELEFONO</label>
+                    <input type="number" class="form-control" formControlName="telefono" name="telefono" required="{{cliente.contacto.telefono}}">
+                </div>
+
+                
+                <div class="col-sm-3">
+                    <label class="control-label" for="movil">MOVIL</label>
+                    <input type="number" class="form-control" formControlName="movil" name="movil" required="{{cliente.contacto.movil}}">
+                </div>
+
+                <div class="col-sm-3">
+                    <label class="control-label" for="correo">CORREO</label>
+                    <input type="text" class="form-control" formControlName="correo" name="correo" required="{{cliente.contacto.correo}}">
+                </div>
+            </fieldset>
+
+            <fieldset class="form-group">
+
+                <h3>DIRECCION</h3>
+
+                <div class="col-sm-3">
+                    <label class="control-label" for="calle">CALLE</label>
+                    <input type="text" class="form-control" formControlName="calle" name="calle" required="{{cliente.direccion.calle}}">
+                </div>
+
+                
+                <div class="col-sm-3">
+                    <label class="control-label" for="ciudad">CIUDAD</label>
+                    <input type="text" class="form-control" formControlName="ciudad" name="ciudad" required="{{cliente.direccion.ciudad}}">
+                </div>
+
+            </fieldset>
+
+            <fieldset class="form-group" style="margin-top: 5%;">
+            
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-primary" [disabled]="!perfileForm.valid">GUARDAR</button>
+                    <button type="button" class="btn btn-primary" (click)="volver()" style="margin-left: 5%;">VOLVER</button>
+                </div>
+            
+            </fieldset>
+        </form>
+    </div>
+</div>
