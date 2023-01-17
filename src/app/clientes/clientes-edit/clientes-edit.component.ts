@@ -18,15 +18,15 @@ export class ClientesEditComponent implements OnInit {
     
     nombreCompleto: [''],
     nif: [''],
-    contacto: {
+    contacto: this.fb.group ({
         telefono: [''],
         movil: [''],
         correo: ['']
-    },
-    direccion: {
+    }),
+    direccion: this.fb.group ({
         calle: [''],
         ciudad: ['']
-    }
+    })
   });
 
   constructor(
@@ -52,13 +52,13 @@ export class ClientesEditComponent implements OnInit {
 
     }else{
       this.nuevoCliente = true;
-      console.log(this.perfileForm.value);
     }
   }
 
   guardar(): void {
 
     if(this.nuevoCliente){
+      console.log(this.perfileForm.value);
       this.clientesService.addClientes(this.perfileForm.value).then(
         () => {
           alert("Nuevo Cliente Creado.");

@@ -3,6 +3,7 @@ import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ProveedoresService } from '../proveedores.service';
 import { Location } from '@angular/common';
+import { Proveedores } from '../interfaz/proveedores';
 
 @Component({
   selector: 'app-proveedores-edit',
@@ -18,15 +19,16 @@ export class ProveedoresEditComponent implements OnInit {
     
     nombreCompleto: [''],
     cif: [''],
-    contacto: {
-        telefono: [''],
-        movil: [''],
-        correo: ['']
-    },
-    direccion: {
-        calle: [''],
-        ciudad: ['']
-    }
+    contacto: this.fb.group ({
+
+      telefono: [''],
+      movil: [''],
+      correo: ['']
+    }),
+    direccion: this.fb.group({
+      calle: [''],
+      ciudad: ['']
+    })
   });
 
   constructor(
@@ -52,13 +54,15 @@ export class ProveedoresEditComponent implements OnInit {
 
     }else{
       this.nuevoProveedor = true;
-      console.log(this.perfileForm.value);
     }
   }
 
   guardar(): void {
 
     if(this.nuevoProveedor){
+
+      this.proveedor = this.perfileForm.value;
+      console.log(this.proveedor);
       this.proveedoresService.addProveedor(this.perfileForm.value).then(
         () => {
           alert("Nuevo Proveedor Creado.");

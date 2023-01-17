@@ -9,7 +9,7 @@ import { ProveedoresService } from '../proveedores.service';
 })
 export class ProveedoresListComponent implements OnInit {
 
-  proveedores?: any[];
+  proveedores: any[] = [];
 
   constructor(
 
@@ -24,7 +24,7 @@ export class ProveedoresListComponent implements OnInit {
         this.proveedores = [];
         resp.forEach((proveedoresData: any) =>{
           console.log(proveedoresData);
-          this.proveedores!.push({
+          this.proveedores.push({
             id: proveedoresData.payload.doc.id,
             ...proveedoresData.payload.doc.data()
           })

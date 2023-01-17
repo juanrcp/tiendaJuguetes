@@ -6,7 +6,7 @@
 
                 <div class="col-sm-12">
                     <label class="control-label" for="nombreCompleto">NOMBRE Y APELLIDOS: </label>
-                    <input type="text" class="form-control" formControlName="nombreCompleto" name="nombreCompleto" required="{{proveedor?.nombreCompleto}}">
+                    <input type="text" class="form-control" formControlName="nombreCompleto" name="nombreCompleto" required="">
                 </div>
 
             </fieldset>
@@ -15,48 +15,56 @@
 
                 <div class="col-sm-3">
                     <label class="control-label" for="cif">CIF</label>
-                    <input type="text" class="form-control" formControlName="cif" name="cif" required="{{proveedor?.cif}}"/>
+                    <input type="text" class="form-control" formControlName="cif" name="cif" required=""/>
                 </div>
 
             </fieldset>
 
-            <fieldset class="form-group">
+            <div formGroupName="contacto">
 
-                <h3>CONTACTO</h3>
+                <fieldset class="form-group">
 
-                <div class="col-sm-3">
-                    <label class="control-label" for="telefono">TELEFONO</label>
-                    <input type="number" class="form-control" formControlName="telefono" name="telefono" required="{{proveedor.contacto.telefono}}">
-                </div>
+                    <h3>CONTACTO</h3>
+    
+                    <div class="col-sm-3">
+                        <label class="control-label" for="telefono">TELEFONO</label>
+                        <input type="text" class="form-control" formControlName="telefono" name="telefono" required="">
+                    </div>
+    
+                    
+                    <div class="col-sm-3">
+                        <label class="control-label" for="movil">MOVIL</label>
+                        <input type="text" class="form-control" formControlName="movil" name="movil" required="">
+                    </div>
+    
+                    <div class="col-sm-3">
+                        <label class="control-label" for="correo">CORREO</label>
+                        <input type="text" class="form-control" formControlName="correo" name="correo" required="">
+                    </div>
+                </fieldset>
 
-                
-                <div class="col-sm-3">
-                    <label class="control-label" for="movil">MOVIL</label>
-                    <input type="number" class="form-control" formControlName="movil" name="movil" required="{{proveedor.contacto.movil}}">
-                </div>
+            </div>
 
-                <div class="col-sm-3">
-                    <label class="control-label" for="correo">CORREO</label>
-                    <input type="text" class="form-control" formControlName="correo" name="correo" required="{{proveedor.contacto.correo}}">
-                </div>
-            </fieldset>
+            <div formGroupName="direccion">
 
-            <fieldset class="form-group">
+                <fieldset class="form-group">
+    
+                    <h3>DIRECCION</h3>
+    
+                    <div class="col-sm-3">
+                        <label class="control-label" for="calle">CALLE</label>
+                        <input type="text" class="form-control" formControlName="calle" name="calle" required="">
+                    </div>
+    
+                    
+                    <div class="col-sm-3">
+                        <label class="control-label" for="ciudad">CIUDAD</label>
+                        <input type="text" class="form-control" formControlName="ciudad" name="ciudad" required="">
+                    </div>
+    
+                </fieldset>
 
-                <h3>DIRECCION</h3>
-
-                <div class="col-sm-3">
-                    <label class="control-label" for="calle">CALLE</label>
-                    <input type="text" class="form-control" formControlName="calle" name="calle" required="{{proveedor.direccion.calle}}">
-                </div>
-
-                
-                <div class="col-sm-3">
-                    <label class="control-label" for="ciudad">CIUDAD</label>
-                    <input type="text" class="form-control" formControlName="ciudad" name="ciudad" required="{{proveedor.direccion.ciudad}}">
-                </div>
-
-            </fieldset>
+            </div>
 
             <fieldset class="form-group" style="margin-top: 5%;">
             

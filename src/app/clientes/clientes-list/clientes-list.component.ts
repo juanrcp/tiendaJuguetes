@@ -10,7 +10,7 @@ import { Clientes } from '../interfaz/clientes';
 })
 export class ClientesListComponent implements OnInit {
 
-  clientes?: any[];
+  clientes: any[] = [];
 
   constructor(
 
@@ -25,10 +25,10 @@ export class ClientesListComponent implements OnInit {
         this.clientes = [];
         resp.forEach((clientesData: any) =>{
           console.log(clientesData);
-          this.clientes!.push({
+          this.clientes.push({
             id: clientesData.payload.doc.id,
             ...clientesData.payload.doc.data()
-          })
+          });
         });
       }
     )
