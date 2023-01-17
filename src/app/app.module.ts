@@ -10,6 +10,8 @@ import { JuguetesModule } from './juguetes/juguetes.module';
 import { ProveedoresModule } from './proveedores/proveedores.module';
 import { ClientesModule } from './clientes/clientes.module';
 import { HomeComponent } from './home/home.component';
+import { ComprasModule } from './compras/compras.module';
+import { VentasModule } from './ventas/ventas.module';
 
 
 @NgModule({
@@ -24,7 +26,9 @@ import { HomeComponent } from './home/home.component';
     AngularFireModule.initializeApp(environment.firebase),
     JuguetesModule,
     ProveedoresModule,
-    ClientesModule
+    ClientesModule,
+    ComprasModule,
+    VentasModule
   ],
   providers: [],
   bootstrap: [AppComponent]

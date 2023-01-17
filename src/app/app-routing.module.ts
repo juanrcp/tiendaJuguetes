@@ -19,6 +19,14 @@ const routes: Routes = [
     path: 'proveedores', loadChildren: () => import('./proveedores/proveedores.module').then
     (p => p.ProveedoresModule)    
   },
+  {
+    path: 'compras', loadChildren: () => import('./compras/compras.module').then
+    (c => c.ComprasModule)    
+  },
+  {
+    path: 'ventas', loadChildren: () => import('./ventas/ventas.module').then
+    (v => v.VentasModule)    
+  },
   {path:'**', redirectTo:'/', pathMatch: 'full' }
 
 ];

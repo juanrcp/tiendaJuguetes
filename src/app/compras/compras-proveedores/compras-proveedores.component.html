@@ -1,0 +1,33 @@
+<div class="container">
+    <h1>COMPRAS PROVEEDORES</h1>
+
+    <div>
+        <p>SELECIONE EL PROVEEDOR DONDE COMPRAR: </p>
+
+        <select class="form-control" name="proveedor" required="" (ngModel)="proveedorSelect">
+            <option value="" disabled selected hidden>SELECCIONE UN PROVEEDOR...</option>
+            <option *ngFor="let proveedor of proveedores" [value]="proveedor" [class.selected]="proveedor === proveedorSelect">{{proveedor.nombreCompleto}}</option>
+        </select>
+
+    </div>
+
+    <div>
+        <p>SELECIONE EL PRODUCTO A COMPRAR: </p>
+        
+        <select class="form-control" name="juguete" required="">
+            <option value="" disabled selected hidden>SELECCIONE UN JUGUETE...</option>
+            <option *ngFor="let juguete of juguetes" [value]="juguete" [class.selected]="juguete === jugueteSelect">{{juguete.nombre}}</option>
+        </select>
+
+    </div>
+    
+    <button class="btn btn-primary" (click)="comprar()">COMPRAR</button>
+
+    <div *ngIf="jugueteSelect && proveedorSelect">
+        <h3>COMPRA REALIZADA </h3>
+        
+
+    </div>
+    
+
+</div>
