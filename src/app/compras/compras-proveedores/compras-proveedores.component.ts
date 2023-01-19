@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ComprasService } from '../servicio/compras.service';
 import { Juguetes } from '../../juguetes/interfaz/juguetes';
 import { Proveedores } from '../../proveedores/interfaz/proveedores';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-compras-proveedores',
@@ -14,9 +15,18 @@ export class ComprasProveedoresComponent implements OnInit {
   juguetes: any[] = [];
   jugueteSelect: any;
   proveedorSelect: any;
+  jugueteComprado?: Juguetes;
+  proveedorCompra?: Proveedores;
+
+  perfileForm = this.formulario.group({
+    proveedorSelect: [''],
+    jugueteSelect: ['']
+
+  });
 
   constructor(
-    private comprasService: ComprasService
+    private comprasService: ComprasService,
+    private formulario: FormBuilder
   ) { }
 
   ngOnInit(): void {
@@ -47,10 +57,22 @@ export class ComprasProveedoresComponent implements OnInit {
   }
   
   comprar(): void{
-    console.log(this.proveedorSelect);
-    console.log(this.jugueteSelect.nombre);
 
-    //alert('Juguete ' + this.jugueteSelect.nombre + ' comprado a ' + this.proveedorSelect.nombreCompleto + ' por ' + this.jugueteSelect.precioCompra + '.');
+    let idJuguete = this.perfileForm.value['jugueteSelect'];
+    let idProveedor = this.perfileForm.value['proveedorSelect'];
+
+    this.comprasService.getJuguete(idJuguete!).subscribe((resp: any) => {
+      console.log("Compra realizada con exito de: " + (resp.payload.data()).nombre + ' por ' + (resp.payload.data()).precioCompra) + '€.';
+      this.jugueteComprado = resp.payload.data();
+    });
+    
+    this.comprasService.getProveedor(idProveedor!).subscribe((resp: any) => {
+      console.log("Venta realizada a: " + (resp.payload.data()).nombreCompleto);
+      this.proveedorCompra = resp.payload.data();
+    });
+
+    alert('Compra realizada!!!');
+  
   }
 
 }

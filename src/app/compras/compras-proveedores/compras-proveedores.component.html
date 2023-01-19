@@ -1,32 +1,44 @@
 <div class="container">
-    <h1>COMPRAS PROVEEDORES</h1>
-
-    <div>
-        <p>SELECIONE EL PROVEEDOR DONDE COMPRAR: </p>
-
-        <select class="form-control" name="proveedor" required="" (ngModel)="proveedorSelect">
-            <option value="" disabled selected hidden>SELECCIONE UN PROVEEDOR...</option>
-            <option *ngFor="let proveedor of proveedores" [value]="proveedor" [class.selected]="proveedor === proveedorSelect">{{proveedor.nombreCompleto}}</option>
-        </select>
-
-    </div>
-
-    <div>
-        <p>SELECIONE EL PRODUCTO A COMPRAR: </p>
-        
-        <select class="form-control" name="juguete" required="">
-            <option value="" disabled selected hidden>SELECCIONE UN JUGUETE...</option>
-            <option *ngFor="let juguete of juguetes" [value]="juguete" [class.selected]="juguete === jugueteSelect">{{juguete.nombre}}</option>
-        </select>
-
-    </div>
     
-    <button class="btn btn-primary" (click)="comprar()">COMPRAR</button>
+    <form [formGroup] = "perfileForm" (ngSubmit)="comprar()">
+            <h1>COMPRAS PROVEEDORES</h1>
 
-    <div *ngIf="jugueteSelect && proveedorSelect">
-        <h3>COMPRA REALIZADA </h3>
+            <br>
+
+        <div>
+            <p>SELECIONE EL PROVEEDOR DONDE COMPRAR: </p>
+
+            <select formControlName="proveedorSelect" class="form-control" name="proveedorSelect" required="">
+                <option value="" disabled selected hidden>SELECCIONE UN PROVEEDOR...</option>
+                <option *ngFor="let proveedor of proveedores" [value]="proveedor.id">{{proveedor.nombreCompleto}}</option>
+            </select>
+
+        </div>
+
+        <div>
+            <p>SELECIONE EL PRODUCTO A COMPRAR: </p>
         
+            <select formControlName="jugueteSelect" class="form-control" name="jugueteSelect" required="">
+                <option value="" disabled selected hidden>SELECCIONE UN JUGUETE...</option>
+                <option *ngFor="let juguete of juguetes" [value]="juguete.id">{{juguete.nombre}}</option>
+            </select>
 
+        </div>
+
+        <br>
+        
+        <button type="submit" class="btn btn-primary" [disabled]="!perfileForm.valid">COMPRAR</button>
+    </form>
+    
+
+    <br>
+
+    <div *ngIf="jugueteComprado && proveedorCompra" style="background-color: bisque;">
+        <h3 style="color: crimson;">RECIBO DE COMPRA REALIZADA:</h3>
+        <br>
+        <p>PROVEEDOR DE COMPRA: {{proveedorCompra.nombreCompleto}}</p>
+        <p>ARTICULO DE COMPRA: {{jugueteComprado.nombre}}</p>
+        <p>COSTE DEL ARTICULO: {{jugueteComprado.precioCompra}}€</p>
     </div>
     
 

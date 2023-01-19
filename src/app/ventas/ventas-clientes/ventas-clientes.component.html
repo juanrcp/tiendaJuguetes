@@ -1,1 +1,45 @@
-<p>ventas-clientes works!</p>
+<div class="container">
+    
+    <form [formGroup] = "perfileForm" (ngSubmit)="vender()">
+            <h1>VENTAS A CLIENTES</h1>
+
+            <br>
+
+        <div>
+            <p>SELECIONE EL CLIENTE: </p>
+
+            <select formControlName="clienteSelect" class="form-control" name="jugueteSelect" required="">
+                <option value="" disabled selected hidden>SELECCIONE UN CLIENTE...</option>
+                <option *ngFor="let cliente of clientes" [value]="cliente.id">{{cliente.nombreCompleto}}</option>
+            </select>
+
+        </div>
+
+        <div>
+            <p>SELECIONE EL PRODUCTO A VENDER: </p>
+        
+            <select formControlName="jugueteSelect" class="form-control" name="jugueteSelect" required="">
+                <option value="" disabled selected hidden>SELECCIONE UN JUGUETE...</option>
+                <option *ngFor="let juguete of juguetes" [value]="juguete.id">{{juguete.nombre}}</option>
+            </select>
+
+        </div>
+
+        <br>
+        
+        <button type="submit" class="btn btn-primary" [disabled]="!perfileForm.valid">VENDER</button>
+    </form>
+    
+
+    <br>
+
+    <div *ngIf="jugueteVendido && clienteVenta" style="background-color: aquamarine;">
+        <h3 style="color: blue;">RECIBO DE VENTA REALIZADA:</h3>
+        <br>
+        <p>VENTA PARA: {{clienteVenta.nombreCompleto}}</p>
+        <p>ARTICULO DE VENTA: {{jugueteVendido.nombre}}</p>
+        <p>COSTE DEL ARTICULO: {{jugueteVendido.precioVenta}}€</p>
+    </div>
+    
+
+</div>

@@ -20,4 +20,12 @@ export class ComprasService {
   listJuguete(): any {
     return this.fire.collection(this.juguetes).snapshotChanges();
   }
+
+  getJuguete(id: string): any{
+    return this.fire.collection(this.juguetes).doc(id).snapshotChanges();
+  }
+
+  getProveedor(id: string): any{
+    return this.fire.collection(this.proveedores).doc(id).snapshotChanges();
+  }
 }
