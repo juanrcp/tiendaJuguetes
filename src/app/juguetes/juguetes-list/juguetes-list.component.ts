@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Juguetes } from '../interfaz/juguetes';
-import { JuguetesService } from '../juguetes.service';
+import { JuguetesService } from '../servicios/juguetes.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -10,6 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class JuguetesListComponent implements OnInit {
 
+  //Variable necesaria
   juguetes?: any[];
 
   constructor(
@@ -20,6 +20,7 @@ export class JuguetesListComponent implements OnInit {
 
   ngOnInit(): void {
 
+    //Rescatamos a todos los juegues que hay en la base de datos y mostramos uno a uno sus datos en la lista
     this.juguetesService.getAllJuguete().subscribe(
       (resp: any) => {
         this.juguetes = [];
@@ -34,6 +35,7 @@ export class JuguetesListComponent implements OnInit {
     )
   }
 
+  //Metodo para borrar un juguete
   borrar(id: string): void{
 
     this.juguetesService.delete(id);

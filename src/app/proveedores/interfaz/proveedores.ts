@@ -1,3 +1,4 @@
+//Interfaz de proveedores
 export interface Proveedores {
 
     nombreCompleto: string,

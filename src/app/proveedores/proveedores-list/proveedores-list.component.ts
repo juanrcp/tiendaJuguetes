@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ProveedoresService } from '../proveedores.service';
+import { ProveedoresService } from '../servicios/proveedores.service';
 
 @Component({
   selector: 'app-proveedores-list',
@@ -9,6 +9,7 @@ import { ProveedoresService } from '../proveedores.service';
 })
 export class ProveedoresListComponent implements OnInit {
 
+  //Varibles necesarias
   proveedores: any[] = [];
 
   constructor(
@@ -19,6 +20,7 @@ export class ProveedoresListComponent implements OnInit {
 
   ngOnInit(): void {
 
+    //Rescatamos todos los proveedores de la base de datos y mostramos sus datos uno a uno en la lista
     this.proveedoresService.getAllProveedor().subscribe(
       (resp: any) => {
         this.proveedores = [];
@@ -33,11 +35,12 @@ export class ProveedoresListComponent implements OnInit {
     )
   }
 
+  //Metodo para borrar un proveedor en concreto
   borrar(id: string): void{
 
     this.proveedoresService.delete(id);
-    alert("Cliente Borrado");
-    console.log("Cliente Borrado");
+    alert("Proveedor Borrado");
+    console.log("Proveedor Borrado");
   }
 
 }

@@ -1,5 +1,6 @@
 <div class="container">
     
+    <!--Formulario de la venta-->
     <form [formGroup] = "perfileForm" (ngSubmit)="vender()">
             <h1>VENTAS A CLIENTES</h1>
 
@@ -33,6 +34,7 @@
 
     <br>
 
+    <!--Recibo de la venta que se muestra tras la misma-->
     <div *ngIf="jugueteVendido && clienteVenta" style="background-color: aquamarine;">
         <h3 style="color: blue;">RECIBO DE VENTA REALIZADA:</h3>
         <br>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ClientesService } from '../clientes.service';
+import { ClientesService } from '../servicios/clientes.service';
 import { Location } from '@angular/common';
 import { FormBuilder } from '@angular/forms';
 
@@ -11,9 +11,11 @@ import { FormBuilder } from '@angular/forms';
 })
 export class ClientesEditComponent implements OnInit {
 
+  //Variables necesarias
   cliente?: any;
   nuevoCliente: boolean = false;
  
+  //Perfil del formulario
   perfileForm = this.fb.group({
     
     nombreCompleto: [''],
@@ -39,6 +41,8 @@ export class ClientesEditComponent implements OnInit {
 
   ngOnInit() {
 
+    //Si la url nos devuelve un identificador rellenamos el fromulario con sus valores y podremos editarlo
+    //y si no creamos un cliente nuevo
     if(this.route.snapshot.paramMap.get('id')){
 
       this.nuevoCliente = false;
@@ -55,8 +59,10 @@ export class ClientesEditComponent implements OnInit {
     }
   }
 
+  //Metodo para guardar a los clientes
   guardar(): void {
 
+    //Si el cliente es nuevo lo creo
     if(this.nuevoCliente){
       console.log(this.perfileForm.value);
       this.clientesService.addClientes(this.perfileForm.value).then(
@@ -70,6 +76,7 @@ export class ClientesEditComponent implements OnInit {
 
     }else{
 
+      //Si el cliente no es nuevo obtengo el identificador y lo modifico
       let id = String(this.route.snapshot.paramMap.get('id'));
       console.warn(this.perfileForm.value);
 
@@ -84,6 +91,7 @@ export class ClientesEditComponent implements OnInit {
     }
   }
 
+  //Metodo para volver al sitio anterior.
   volver(): void {
     this.location.back();
   }

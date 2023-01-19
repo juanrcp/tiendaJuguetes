@@ -1,5 +1,7 @@
 <div class="container">
     <div class="col-sm-12">
+        <!--Formulario para editar o añadir un nuevo proveedor en el cual se requiere rellenar todos los campos
+        para activarlo-->
         <form [formGroup]="perfileForm" (ngSubmit)="guardar()">
 
             <fieldset class="form-group">
@@ -20,6 +22,7 @@
 
             </fieldset>
 
+            <!--En esta division al igual que en clientes tenemos el formGroupName para la agrupacion contacto en el formulario-->
             <div formGroupName="contacto">
 
                 <fieldset class="form-group">
@@ -45,6 +48,7 @@
 
             </div>
 
+            <!--En esta division al igual que en clientes tenemos el formGroupName para la agrupacion direccion en el formulario-->
             <div formGroupName="direccion">
 
                 <fieldset class="form-group">

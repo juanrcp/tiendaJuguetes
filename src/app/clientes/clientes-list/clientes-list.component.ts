@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ClientesService } from '../clientes.service';
+import { ClientesService } from '../servicios/clientes.service';
 import { ActivatedRoute } from '@angular/router';
 import { Clientes } from '../interfaz/clientes';
 
@@ -10,6 +10,7 @@ import { Clientes } from '../interfaz/clientes';
 })
 export class ClientesListComponent implements OnInit {
 
+  //Variables necesarias
   clientes: any[] = [];
 
   constructor(
@@ -20,6 +21,7 @@ export class ClientesListComponent implements OnInit {
 
   ngOnInit(): void {
 
+    //Cargamos todos los clientes y mostramos uno a uno sus datos en la vista 
     this.clientesService.getAllClientes().subscribe(
       (resp: any) => {
         this.clientes = [];
@@ -34,6 +36,7 @@ export class ClientesListComponent implements OnInit {
     )
   }
 
+  //Metodo para borrar
   borrar(id: string): void{
 
     this.clientesService.delete(id);

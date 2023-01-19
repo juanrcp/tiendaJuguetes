@@ -11,6 +11,7 @@ import { FormBuilder } from '@angular/forms';
 })
 export class ComprasProveedoresComponent implements OnInit {
 
+  //Variables necesarias
   proveedores: any[] = [];
   juguetes: any[] = [];
   jugueteSelect: any;
@@ -18,6 +19,7 @@ export class ComprasProveedoresComponent implements OnInit {
   jugueteComprado?: Juguetes;
   proveedorCompra?: Proveedores;
 
+  //Perfil del formulario
   perfileForm = this.formulario.group({
     proveedorSelect: [''],
     jugueteSelect: ['']
@@ -31,6 +33,7 @@ export class ComprasProveedoresComponent implements OnInit {
 
   ngOnInit(): void {
     
+    //Cargamos todos los proveedores disponibles en la base de datos
     this.comprasService.listProveedor().subscribe(
       (resp: any) => {
         this.proveedores = [];
@@ -43,6 +46,7 @@ export class ComprasProveedoresComponent implements OnInit {
       });
     });
    
+    //Cargamos el catalogo disponible de juguetes
     this.comprasService.listJuguete().subscribe(
       (resp: any) => {
         this.juguetes = [];
@@ -56,11 +60,15 @@ export class ComprasProveedoresComponent implements OnInit {
     });
   }
   
+  //Metodo para comprar
   comprar(): void{
 
+    //Guardamos los identificadores recogidos en el formulario
     let idJuguete = this.perfileForm.value['jugueteSelect'];
     let idProveedor = this.perfileForm.value['proveedorSelect'];
 
+    //Rescatamos de la base de datos el juguete y el proveedor selecionados por su identificador y mostramos sus datos 
+    //para confirmar la compra y motramos mensaje de confirmacion
     this.comprasService.getJuguete(idJuguete!).subscribe((resp: any) => {
       console.log("Compra realizada con exito de: " + (resp.payload.data()).nombre + ' por ' + (resp.payload.data()).precioCompra) + '€.';
       this.jugueteComprado = resp.payload.data();

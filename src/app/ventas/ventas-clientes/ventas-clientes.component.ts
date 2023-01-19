@@ -11,6 +11,7 @@ import { Clientes } from '../../clientes/interfaz/clientes';
 })
 export class VentasClientesComponent implements OnInit {
 
+  //Variables necesarias
   clientes: any[] = [];
   juguetes: any[] = [];
   jugueteSelect: any;
@@ -18,6 +19,7 @@ export class VentasClientesComponent implements OnInit {
   jugueteVendido?: Juguetes;
   clienteVenta?: Clientes;
 
+  //Perfil del formulario
   perfileForm = this.formulario.group({
     clienteSelect: [''],
     jugueteSelect: ['']
@@ -31,6 +33,7 @@ export class VentasClientesComponent implements OnInit {
 
   ngOnInit(): void {
     
+    //Cargamos todos los clientes disponibles en la base de datos
     this.ventasService.listClientes().subscribe(
       (resp: any) => {
         this.clientes = [];
@@ -43,6 +46,7 @@ export class VentasClientesComponent implements OnInit {
       });
     });
    
+    //Cargamos el catalogo disponible de juguetes
     this.ventasService.listJuguete().subscribe(
       (resp: any) => {
         this.juguetes = [];
@@ -56,11 +60,15 @@ export class VentasClientesComponent implements OnInit {
     });
   }
 
+  //Metodo para vender
   vender(): void{
 
+    //Guardamos los identificadores recogidos en el formulario
     let idJuguete = this.perfileForm.value['jugueteSelect'];
     let idCliente = this.perfileForm.value['clienteSelect'];
 
+    //Rescatamos de la base de datos el juguete y el cliente selecionados por su identificador y mostramos sus datos 
+    //para confirmar la venta y motramos mensaje de confirmacion
     this.ventasService.getJuguete(idJuguete!).subscribe((resp: any) => {
       console.log("Venta realizada con exito de: " + (resp.payload.data()).nombre + ' por ' + (resp.payload.data()).precioVenta + '€.');
       this.jugueteVendido = resp.payload.data();

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { ProveedoresService } from '../proveedores.service';
+import { ProveedoresService } from '../servicios/proveedores.service';
 import { Location } from '@angular/common';
 import { Proveedores } from '../interfaz/proveedores';
 
@@ -12,9 +12,11 @@ import { Proveedores } from '../interfaz/proveedores';
 })
 export class ProveedoresEditComponent implements OnInit {
 
+  //Variables necesarias
   proveedor?: any;
   nuevoProveedor: boolean = false;
  
+  //Perfil del formulario
   perfileForm = this.fb.group({
     
     nombreCompleto: [''],
@@ -41,6 +43,8 @@ export class ProveedoresEditComponent implements OnInit {
 
   ngOnInit() {
 
+    //Si hay una id en la ruta rescatamos de la base de datos el proveedor y rellenamos con sus datos el formulario
+    //para asi poder editarlo
     if(this.route.snapshot.paramMap.get('id')){
 
       this.nuevoProveedor = false;
@@ -57,8 +61,10 @@ export class ProveedoresEditComponent implements OnInit {
     }
   }
 
+  //Metodo para guardar en la base de datos
   guardar(): void {
 
+    //Si el proveedor es nuevo lo creamos en la base de datos usando los datos del formulario
     if(this.nuevoProveedor){
 
       this.proveedor = this.perfileForm.value;
@@ -74,6 +80,8 @@ export class ProveedoresEditComponent implements OnInit {
 
     }else{
 
+      //Si el proveedor no es nuevo obtenemos su identificador de la url y rellenamos los campos del formulario con
+      //sus datos, con lo que conseguimos poder editarlo
       let id = String(this.route.snapshot.paramMap.get('id'));
       console.warn(this.perfileForm.value);
 

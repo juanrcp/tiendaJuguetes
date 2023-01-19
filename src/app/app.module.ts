@@ -12,12 +12,14 @@ import { ClientesModule } from './clientes/clientes.module';
 import { HomeComponent } from './home/home.component';
 import { ComprasModule } from './compras/compras.module';
 import { VentasModule } from './ventas/ventas.module';
-
+import { MenuModule } from './menu/menu.module';
+import { MenuGeneralComponent } from './menu/menu-general/menu-general.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    MenuGeneralComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +30,8 @@ import { VentasModule } from './ventas/ventas.module';
     ProveedoresModule,
     ClientesModule,
     ComprasModule,
-    VentasModule
+    VentasModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

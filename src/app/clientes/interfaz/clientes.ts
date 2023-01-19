@@ -1,5 +1,6 @@
 export interface Clientes {
 
+    //Interfaz de clientes
     nombreCompleto: string,
     nif: string,
     contacto: {
