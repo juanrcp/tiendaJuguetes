@@ -13,13 +13,12 @@ import { HomeComponent } from './home/home.component';
 import { ComprasModule } from './compras/compras.module';
 import { VentasModule } from './ventas/ventas.module';
 import { MenuModule } from './menu/menu.module';
-import { MenuGeneralComponent } from './menu/menu-general/menu-general.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    MenuGeneralComponent
+    //MenuGeneralComponent
   ],
   imports: [
     BrowserModule,
@@ -31,6 +30,8 @@ import { MenuGeneralComponent } from './menu/menu-general/menu-general.component
     ClientesModule,
     ComprasModule,
     VentasModule,
+    //Importamos el modulo menu para poder usar sus componentes
+    MenuModule
 
   ],
   providers: [],
