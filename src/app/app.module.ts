@@ -18,7 +18,7 @@ import { MenuModule } from './menu/menu.module';
   declarations: [
     AppComponent,
     HomeComponent,
-    //MenuGeneralComponent
+
   ],
   imports: [
     BrowserModule,
